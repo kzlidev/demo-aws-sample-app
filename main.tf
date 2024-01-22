@@ -3,4 +3,8 @@ module "s3" {
   version = "0.0.4"
 
   bucket_name = "likztestbucket"
+
+  tags = {
+    Name = "likztestbucket"
+  }
 }
