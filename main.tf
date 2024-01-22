@@ -1,8 +1,6 @@
-resource "aws_s3_bucket" "example" {
-  bucket = "kzlidev-test-s3bucket"
+module "s3" {
+  source  = "app.terraform.io/likz_dev/s3/aws"
+  version = "0.0.1"
 
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+  bucket_name = "likztestbucket"
 }
