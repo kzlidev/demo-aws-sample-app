@@ -15,9 +15,8 @@ data "aws_ami" "al2" {
 }
 
 data "aws_vpc" "vpc" {
-  filter {
-    name   = "Name"
-    values = ["likz-vpc"]
+  tags = {
+    Name = "likz-vpc"
   }
 }
 
