@@ -18,7 +18,7 @@ data "aws_security_group" "default" {
   name = "default"
 }
 
-resource "aws_security_group" "http_from_all" {
+resource "aws_security_group_rule" "http_from_all" {
   type              = "ingress"
   from_port         = 80
   to_port           = 80
