@@ -23,3 +23,6 @@ cat <<EOT >> /var/www/html/index.html
   </body>
 </html>
 EOT
+
+# Restart HTTPD
+sudo systemctl restart httpd
