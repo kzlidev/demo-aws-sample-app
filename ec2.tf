@@ -27,13 +27,7 @@ resource "aws_security_group_rule" "http_from_all" {
   security_group_id = data.aws_security_group.default
 }
 
-resource "aws_key_pair" "kp" {
-  key_name   = "${var.instance_name}-kp"
-  public_key = file("~/.ssh/terraform.pub")
-}
-
 resource "aws_instance" "aml2" {
-  key_name      = aws_key_pair.kp.key_name
   ami           = data.aws_ami.al2.id
   instance_type = var.instance_type
 
