@@ -14,8 +14,16 @@ data "aws_ami" "al2" {
   owners = ["137112412989"]
 }
 
+data "aws_vpc" "vpc" {
+  filter {
+    name   = "Name"
+    values = ["likz-vpc"]
+  }
+}
+
 data "aws_security_group" "default" {
-  name = "default"
+  name   = "default"
+  vpc_id = data.aws_vpc.vpc.id
 }
 
 resource "aws_security_group_rule" "http_from_all" {
@@ -38,8 +46,9 @@ resource "aws_security_group_rule" "ssh_from_ic" {
 }
 
 resource "aws_instance" "aml2" {
-  ami           = data.aws_ami.al2.id
-  instance_type = var.instance_type
+  ami                    = data.aws_ami.al2.id
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [data.aws_security_group.default.id]
 
   tags = {
     Name = var.instance_name

@@ -18,7 +18,7 @@ cat <<EOT >> /var/www/html/index.html
     <title>Terraform Demo Web Server</title>
   </head>
   <body>
-    <title>Terraform Demo Web Server</title>
+    <h1>Terraform Demo Web Server</h1>
     <p>This is deployment 1</p>
   </body>
 </html>
