@@ -44,13 +44,13 @@ resource "aws_security_group_rule" "ssh_from_ic" {
   security_group_id = data.aws_security_group.default.id
 }
 
-resource "aws_instance" "aml2" {
-  ami                    = data.aws_ami.al2.id
-  instance_type          = var.instance_type
-  vpc_security_group_ids = [data.aws_security_group.default.id]
-
-  tags = {
-    Name = var.instance_name
-  }
-  user_data = file("${path.module}/script/userdata.sh")
-}
+#resource "aws_instance" "aml2" {
+#  ami                    = data.aws_ami.al2.id
+#  instance_type          = var.instance_type
+#  vpc_security_group_ids = [data.aws_security_group.default.id]
+#
+#  tags = {
+#    Name = var.instance_name
+#  }
+#  user_data = file("${path.module}/script/userdata.sh")
+#}
