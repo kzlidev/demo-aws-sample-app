@@ -25,6 +25,10 @@ data "aws_subnets" "subnets" {
     name   = "vpc-id"
     values = [data.aws_vpc.vpc.id]
   }
+  filter {
+    name   = "Name"
+    values = ["Public*"]
+  }
 }
 
 data "aws_security_group" "default" {
