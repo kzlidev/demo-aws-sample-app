@@ -25,9 +25,8 @@ data "aws_subnets" "subnets" {
     name   = "vpc-id"
     values = [data.aws_vpc.vpc.id]
   }
-  filter {
-    name   = "Name"
-    values = ["Public*"]
+  tags = {
+    "Name" = "Public*"
   }
 }
 
