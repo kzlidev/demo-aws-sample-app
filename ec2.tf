@@ -60,6 +60,8 @@ resource "aws_instance" "aml2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.default.id]
   subnet_id              = data.aws_subnets.subnets.ids[0]
+  associate_public_ip_address = true
+
 
   tags = {
     Name = var.instance_name
