@@ -1,18 +1,18 @@
-data "aws_ami" "al2" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["al2023-ami-2023.3.20240122.0-kernel-6.1-x86_64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["137112412989"]
-}
+#data "aws_ami" "al2" {
+#  most_recent = true
+#
+#  filter {
+#    name   = "name"
+#    values = ["al2023-ami-2023.3.20240122.0-kernel-6.1-x86_64"]
+#  }
+#
+#  filter {
+#    name   = "virtualization-type"
+#    values = ["hvm"]
+#  }
+#
+#  owners = ["137112412989"]
+#}
 
 data "aws_vpc" "vpc" {
   tags = {
@@ -44,13 +44,13 @@ resource "aws_security_group_rule" "ssh_from_ic" {
   security_group_id = data.aws_security_group.default.id
 }
 
-#resource "aws_instance" "aml2" {
-#  ami                    = data.aws_ami.al2.id
-#  instance_type          = var.instance_type
-#  vpc_security_group_ids = [data.aws_security_group.default.id]
-#
-#  tags = {
-#    Name = var.instance_name
-#  }
-#  user_data = file("${path.module}/script/userdata.sh")
-#}
+resource "aws_instance" "aml2" {
+  ami                    = data.hcp_packer_image.custom_ami.cloud_image_id
+  instance_type          = var.instance_type
+  vpc_security_group_ids = [data.aws_security_group.default.id]
+
+  tags = {
+    Name = var.instance_name
+  }
+  user_data = file("${path.module}/script/userdata.sh")
+}
