@@ -55,7 +55,7 @@ resource "aws_instance" "aml2" {
   ami                    = data.hcp_packer_image.custom_ami.cloud_image_id
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.default.id]
-  subnet_id              = data.aws_subnets.subnets[0].id
+  subnet_id              = data.aws_subnets.subnets.ids[0]
 
   tags = {
     Name = var.instance_name
