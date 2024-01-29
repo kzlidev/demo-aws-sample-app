@@ -55,10 +55,11 @@ resource "aws_security_group_rule" "ssh_from_ic" {
 }
 
 resource "aws_instance" "aml2" {
-  ami                    = data.hcp_packer_image.custom_ami.cloud_image_id
-  instance_type          = var.instance_type
-  vpc_security_group_ids = [data.aws_security_group.default.id]
-  subnet_id              = data.aws_subnets.subnets.ids[0]
+  #  ami                    = data.hcp_packer_image.custom_ami.cloud_image_id
+  ami                         = "ami-0097cc7843f764ef5"
+  instance_type               = var.instance_type
+  vpc_security_group_ids      = [data.aws_security_group.default.id]
+  subnet_id                   = data.aws_subnets.subnets.ids[0]
   associate_public_ip_address = true
 
 
