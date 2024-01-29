@@ -20,6 +20,13 @@ data "aws_vpc" "vpc" {
   }
 }
 
+data "aws_subnets" "subnets" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
+}
+
 data "aws_security_group" "default" {
   name   = "default"
   vpc_id = data.aws_vpc.vpc.id
@@ -48,6 +55,7 @@ resource "aws_instance" "aml2" {
   ami                    = data.hcp_packer_image.custom_ami.cloud_image_id
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.default.id]
+  subnet_id              = data.aws_subnets.subnets[0].id
 
   tags = {
     Name = var.instance_name
