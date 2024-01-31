@@ -6,7 +6,7 @@ check "ami_version_check" {
   }
 
   assert {
-    condition     = data.aws_instance.hashicat_current.ami == data.hcp_packer_artifact.custom_ami.id
-    error_message = "Must use the latest available AMI, ${data.hcp_packer_artifact.custom_ami.id}."
+    condition     = data.aws_instance.hashicat_current.ami == data.hcp_packer_artifact.custom_ami.external_identifier
+    error_message = "Must use the latest available AMI, ${data.hcp_packer_artifact.custom_ami.external_identifier}."
   }
 }

@@ -1,5 +1,5 @@
 resource "aws_instance" "aml2" {
-  ami                         = data.hcp_packer_artifact.custom_ami.id
+  ami                         = data.hcp_packer_artifact.custom_ami.external_identifier
   #  ami                         = "ami-0097cc7843f764ef5"
   instance_type               = var.instance_type
   vpc_security_group_ids      = [data.aws_security_group.default.id]
