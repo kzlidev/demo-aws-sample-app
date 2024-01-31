@@ -13,3 +13,8 @@ data "aws_subnets" "subnets" {
     "Name" = "Public*"
   }
 }
+
+resource "aws_eip" "eip" {
+  instance = aws_instance.aml2.id
+  domain   = "vpc"
+}

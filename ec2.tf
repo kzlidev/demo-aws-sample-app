@@ -6,7 +6,6 @@ resource "aws_instance" "aml2" {
   subnet_id                   = data.aws_subnets.subnets.ids[0]
   associate_public_ip_address = true
 
-
   tags = {
     Name = "${var.prefix}-cat-instance"
   }
