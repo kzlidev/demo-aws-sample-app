@@ -4,8 +4,8 @@
 #}
 
 data "hcp_packer_artifact" "custom_ami" {
-  bucket_name    = "custom-aml-2"
-  cloud_provider = "aws"
-  channel_name   = "latest"
-  region         = var.region
+  bucket_name  = "custom-aml-2"
+  platform     = "aws"
+  channel_name = "latest"
+  region       = var.region
 }
