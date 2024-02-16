@@ -4,7 +4,7 @@ module "s3" {
 
   bucket_name = "${var.prefix}-demo-bucket"
 
-  tags = {
-    Name = "${var.prefix}-demo-bucket"
-  }
+#  tags = {
+#    Name = "${var.prefix}-demo-bucket"
+#  }
 }
