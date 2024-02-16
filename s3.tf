@@ -1,6 +1,6 @@
 module "s3" {
   source  = "app.terraform.io/likz_dev/s3/aws"
-  version = "0.0.4"
+  version = "0.0.7"
 
   bucket_name = "${var.prefix}-demo-bucket"
 
