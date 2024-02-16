@@ -1,5 +1,10 @@
 check "ami_version_check" {
   data "aws_instance" "hashicat_current" {
+    filter {
+      name   = "instance-state-name"
+      values = ["running"]
+    }
+
     instance_tags = {
       Name = "${var.prefix}-cat-instance"
     }
